@@ -6,7 +6,7 @@ import LOGO from './logo.svg'
 const App = () => {
   return (
     <div>
-        <h1>App</h1>
+        <h1>App - {process.env.NODE_ENV} {process.env.name}</h1>
         <img src={IMAGE} alt="React Logo"  width="320" height="180"/>
         <img src={LOGO} alt="React Logo"  width="300"/>
     </div>
