@@ -1,20 +1,35 @@
 import React from 'react'
-import './styles.css'
-import IMAGE from './react.png'
-import LOGO from './logo.svg'
-import ClickCounter from './ClickCounter'
+import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom'
+import './App.css'
+import Homepage from './compontents/Home.page'
+import SuperHeroesPage from './compontents/SuperHeroes.page'
+import RQSuperHeroesPage from './compontents/RQSuperHeroes.page'
 
 const App = () => {
   const name = 'Vishwas'
   return (
-    <div>
-      <h1>
-        eidted - {process.env.NODE_ENV} {process.env.name}
-      </h1>
-      <img src={IMAGE} alt="React Logo" width="320" height="180" />
-      <img src={LOGO} alt="React Logo" width="300" />
-      <ClickCounter />
-    </div>
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/super-heroes'>Traditional Super Heroes</Link>
+            </li>
+            <li>
+              <Link to='/rq-super-heroes'>RQ Super Heroes</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path='/super-heroes' element={<SuperHeroesPage />}/>
+          <Route path='/rq-super-heroes' element={<RQSuperHeroesPage />}/>
+          <Route path='/' element={<Homepage/>}/>
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
