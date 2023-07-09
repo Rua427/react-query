@@ -4,7 +4,7 @@ import '../../db'
 import { SuperHeroesDB } from '../../db'
 
 const fetchSuperHeroes = () => {
-  return axios.get('http://localhost:4000/superheroes1').then(response => response.data)
+  return axios.get('http://localhost:4000/superheroes').then(response => response.data)
 }
 
 const RQSuperHeroesPage = () => {

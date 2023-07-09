@@ -1,6 +1,7 @@
 import React from 'react'
 import {QueryClientProvider, QueryClient} from 'react-query'
 import {BrowserRouter as Router, Route, Routes, Link} from 'react-router-dom'
+import {ReactQueryDevtools} from 'react-query/devtools'
 import './App.css'
 import Homepage from './compontents/Home.page'
 import SuperHeroesPage from './compontents/SuperHeroes.page'
@@ -33,6 +34,7 @@ const App = () => {
           </Routes>
         </div>
       </Router>
+      <ReactQueryDevtools initialIsOpen={false} position='bottom-right'/>
     </QueryClientProvider>
   )
 }
