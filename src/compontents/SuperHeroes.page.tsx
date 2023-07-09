@@ -5,12 +5,19 @@ import { InitSuperHeroesDB } from '../../db'
 const SuperHeroesPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState(InitSuperHeroesDB)
+  const [error, setError] = useState('')
 
 
   useEffect(() => {
-    axios.get('http://localhost:4000/superheroes').then(res => {
+    axios
+    .get('http://localhost:4000/superheroes')
+    .then(res => {
       setData(res.data)
       setIsLoading(false)
+    })
+    .catch(error => {
+      setError(error.message)
+      setIsLoading(false);
     })
   }, [])
 
@@ -18,6 +25,9 @@ const SuperHeroesPage = () => {
     return <h2>Loading...</h2>
   }
 
+  if(error){
+    return <h2>{error}</h2>
+  }
   return (
     <div>
       <h2>Super Heroes Page</h2>

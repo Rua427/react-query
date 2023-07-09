@@ -1,6 +1,6 @@
 
 
-export type SuperHeroesDB ={
+export interface  SuperHeroesDB {
     id : number,
     name: string,
     alterEgo: string,
