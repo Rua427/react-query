@@ -6,6 +6,6 @@ module.exports = {
     plugins:[
         new webpack.DefinePlugin({
             'process.env.name' : JSON.stringify('Codevolution'),
-        })
-    ]
+        }),
+    ],
 }
