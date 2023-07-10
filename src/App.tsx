@@ -28,9 +28,9 @@ const App = () => {
             </ul>
           </nav>
           <Routes>
+            <Route path='/' element={<Homepage/>}/>
             <Route path='/super-heroes' element={<SuperHeroesPage />}/>
             <Route path='/rq-super-heroes' element={<RQSuperHeroesPage />}/>
-            <Route path='/' element={<Homepage/>}/>
           </Routes>
         </div>
       </Router>

@@ -8,11 +8,22 @@ const fetchSuperHeroes = () => {
 }
 
 const RQSuperHeroesPage = () => {
-  const {isLoading, data, isError, error, isFetching} = useQuery<SuperHeroesDB[], Error>(
+  // refetch 함수를 호출할때만 패치를 한다.
+  const {isLoading, data, isError, error, isFetching, refetch} = useQuery<SuperHeroesDB[], Error>(
     'super-heroes',  
     fetchSuperHeroes,
     {
-      cacheTime: 5000,
+      // 컴포넌트 활성화할때 패치
+      refetchOnMount:false,
+      // 브라우저 마우스 포커싱 될때 패치
+      refetchOnWindowFocus:true,
+      //일정시간마다 패치 ms
+      //refetchInterval: 2000,
+      // 일정시간마다 패치 백그라운드에서도 동작 ... 안하는데?
+      //refetchIntervalInBackground:true,
+
+      // 패치 안함
+      enabled:false,
     }
   )
 
@@ -29,6 +40,7 @@ const RQSuperHeroesPage = () => {
   return (
     <>
     <h2>React Query Super Heroes Page</h2>
+    <button onClick={() => {refetch()}}>Fetch heroes</button>
     {
       data?.map((hero) => {
         return <div key={hero.name}>{hero.name}</div>
